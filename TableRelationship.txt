@@ -1,0 +1,46 @@
+﻿Table Bus :
+====================
+create table bus(
+busNo int primary key,
+bname varchar(15) not null,
+route varchar(30) not null,
+btype varchar(5) check Type = ‘AC’ OR Type = ‘NonAC’,
+Arr datetime,	
+Dep datetime,
+AvaiSeats int
+);
+
+Table Seat :
+==============
+create table seat (
+seatNo int auto_increment,
+
+
+busNo int unique,
+primary key (seatno, busNo),
+foreign key busNo references bus(busNo)
+);
+
+Table Customer :
+=====================
+create table customer (
+
+
+cid int primary key auto_increment,
+
+
+cname varchar(15),
+
+
+address varchar(15),
+
+
+
+seatNo int unique,
+busNo int unique,
+foreign key (seatNo, busNo) references seat (seatno, busNo)
+);
+
+
+-- Bus table is having one to many relationship with seat.(One bus will have multiple seats)
+-- Seat table is having one to one relationship with customer. Here seatNo and busNo is matched.
