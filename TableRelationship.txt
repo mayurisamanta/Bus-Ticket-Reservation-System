@@ -14,8 +14,6 @@ Table Seat :
 ==============
 create table seat (
 seatNo int auto_increment,
-
-
 busNo int unique,
 primary key (seatno, busNo),
 foreign key busNo references bus(busNo)
@@ -33,8 +31,6 @@ cname varchar(15),
 
 
 address varchar(15),
-
-
 
 seatNo int unique,
 busNo int unique,
