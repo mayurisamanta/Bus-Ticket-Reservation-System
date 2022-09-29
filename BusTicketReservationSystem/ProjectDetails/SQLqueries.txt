@@ -1,0 +1,8 @@
+cusSignUp1 / cusSignUp2 :
+--------------------------
+insert into customer(username, password, firstName, lastName, address, mobile) values (?,?,?,?,?,?);
+
+
+CusLoginusecase :
+------------------
+select * from customer where username = ? and password = ?;

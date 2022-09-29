@@ -36,7 +36,7 @@ create table booking (
     status boolean default false,
     foreign key (cusId) references Customer(cusId),
     foreign key (busNo) references Bus(busNo)
-)
+);
 
 -- Customer and Bus has many to many relationship.
 -- Using Booking table as linking between Customer and Bus.

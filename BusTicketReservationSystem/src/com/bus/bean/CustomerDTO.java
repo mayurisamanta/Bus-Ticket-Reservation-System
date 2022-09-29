@@ -13,7 +13,11 @@ public class CustomerDTO {
 	
 	private String mobile;
 	
+	private int BusNo;
+	
 	private String bName;
+	
+	private int[] seatNo;
 	
 	private String routeFrom;
 	
@@ -22,22 +26,21 @@ public class CustomerDTO {
 	private Date arrival;
 	
 	private Date departure;
-	
-	private int[] seatNo;
 
-	public CustomerDTO(String firstName, String lastName, String address, String mobile, String bName, String routeFrom,
-			String routeTo, Date arrival, Date departure, int[] seatNo) {
+	public CustomerDTO(String firstName, String lastName, String address, String mobile, int busNo, String bName,
+			int[] seatNo, String routeFrom, String routeTo, Date arrival, Date departure) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.mobile = mobile;
+		this.BusNo = busNo;
 		this.bName = bName;
+		this.seatNo = seatNo;
 		this.routeFrom = routeFrom;
 		this.routeTo = routeTo;
 		this.arrival = arrival;
 		this.departure = departure;
-		this.seatNo = seatNo;
 	}
 
 	public CustomerDTO() {
@@ -76,12 +79,28 @@ public class CustomerDTO {
 		this.mobile = mobile;
 	}
 
+	public int getBusNo() {
+		return BusNo;
+	}
+
+	public void setBusNo(int busNo) {
+		this.BusNo = busNo;
+	}
+
 	public String getbName() {
 		return bName;
 	}
 
 	public void setbName(String bName) {
 		this.bName = bName;
+	}
+
+	public int[] getSeatNo() {
+		return seatNo;
+	}
+
+	public void setSeatNo(int[] seatNo) {
+		this.seatNo = seatNo;
 	}
 
 	public String getRouteFrom() {
@@ -116,20 +135,17 @@ public class CustomerDTO {
 		this.departure = departure;
 	}
 
-	public int[] getSeatNo() {
-		return seatNo;
-	}
-
-	public void setSeatNo(int[] seatNo) {
-		this.seatNo = seatNo;
-	}
-
 	@Override
 	public String toString() {
 		return "CustomerDTO [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", mobile="
-				+ mobile + ", bName=" + bName + ", routeFrom=" + routeFrom + ", routeTo=" + routeTo + ", arrival="
-				+ arrival + ", departure=" + departure + ", seatNo=" + Arrays.toString(seatNo) + "]";
+				+ mobile + ", BusNo=" + BusNo + ", bName=" + bName + ", seatNo=" + Arrays.toString(seatNo)
+				+ ", routeFrom=" + routeFrom + ", routeTo=" + routeTo + ", arrival=" + arrival + ", departure="
+				+ departure + "]";
 	}
 	
 	
+	
+	
+
+		
 }

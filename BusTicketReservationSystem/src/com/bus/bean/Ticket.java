@@ -7,14 +7,14 @@ public class Ticket {
 	
 	private int cusId;
 	
-	private int busId;
+	private int busNo;
 	
 	private int[] seatNo;
 
-	public Ticket(int cusId, int busId, int[] seatNo) {
+	public Ticket(int cusId, int busNo, int[] seatNo) {
 		super();
 		this.cusId = cusId;
-		this.busId = busId;
+		this.busNo = busNo;
 		this.seatNo = seatNo;
 	}
 
@@ -30,12 +30,12 @@ public class Ticket {
 		this.cusId = cusId;
 	}
 
-	public int getBusId() {
-		return busId;
+	public int getBusNo() {
+		return busNo;
 	}
 
-	public void setBusId(int busId) {
-		this.busId = busId;
+	public void setBusNo(int busNo) {
+		this.busNo = busNo;
 	}
 
 	public int[] getSeatNo() {
@@ -48,7 +48,7 @@ public class Ticket {
 
 	@Override
 	public String toString() {
-		return "Ticket [cusId=" + cusId + ", busId=" + busId + ", seatNo=" + Arrays.toString(seatNo) + "]";
+		return "Ticket [cusId=" + cusId + ", busNo=" + busNo + ", seatNo=" + Arrays.toString(seatNo) + "]";
 	}
 	
 	
