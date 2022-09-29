@@ -1,0 +1,20 @@
+Methods :
+=========
+
+Customer :
+----------
+
+-- cusSignUp (string)  --> add in customer table
+-- cusLogin (customer)
+-- bookTicket (customerDTO) --> add in Booking table
+-- cancelTicket (string) --> remove from Booking table
+-- allTickets (list of customerDTO)
+
+Administrator :
+---------------
+
+-- adminLogin (string)
+-- addBus (string) --> add in bus table
+-- confirmationOfSeats (customerDTO) --> update in Booking table
+-- allBookingDetails (list of Booking)
+
