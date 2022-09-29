@@ -1,42 +1,36 @@
 ﻿Table Bus :
 ====================
 create table bus(
-busNo int primary key,
-bname varchar(15) not null,
-route varchar(30) not null,
-btype varchar(5) check Type = ‘AC’ OR Type = ‘NonAC’,
-Arr datetime,	
-Dep datetime,
-AvaiSeats int
-);
-
-Table Seat :
-==============
-create table seat (
-seatNo int auto_increment,
-busNo int unique,
-primary key (seatno, busNo),
-foreign key busNo references bus(busNo)
+    busNo int primary key,
+    bName varchar(20) not null unique,
+    routeFrom varchar(20) not null;
+    routeTo varchar(20) not null;
+    bType varchar(5) not null check Type = ‘AC’ OR Type = ‘NonAC’,
+    arrival Date not null;
+    departure Date not null;
+    totalSeats int not null;
+    AvailSeats int not null;
 );
 
 Table Customer :
 =====================
-create table customer (
-
-
-cid int primary key auto_increment,
-
-
-cname varchar(15),
-
-
-address varchar(15),
-
-seatNo int unique,
-busNo int unique,
-foreign key (seatNo, busNo) references seat (seatno, busNo)
+create table Customer (
+    cusId int primary key auto_increment,
+    firstName varchar(20) not null;
+    lastName varchar(20) not null;
+    address varchar(20) not null,
+    mobile varchar(12) not null;
 );
 
+Table Ticket :
+==================
+create table Ticket (
+    cusId int not null;
+    busNo int not null;
+    seatNo int[] not null;
+    foreign key (cusId) references Customer(cusId);
+    foreign key (busNo) references Bus(busNo);
+)
 
--- Bus table is having one to many relationship with seat.(One bus will have multiple seats)
--- Seat table is having one to one relationship with customer. Here seatNo and busNo is matched.
+-- Customer and Bus has many to many relationship.
+-- Using Ticket table as linking between Customer and Bus.
