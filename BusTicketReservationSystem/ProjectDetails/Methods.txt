@@ -6,7 +6,7 @@ Customer :
 
 -- cusSignUp (string)  --> add in customer table
 -- cusLogin (customer)
--- bookTicket (customerDTO) --> add in Booking table
+-- bookTicket (boolean) --> add in Booking table
 -- cancelTicket (string) --> remove from Booking table
 -- allTickets (list of customerDTO)
 

@@ -9,7 +9,9 @@ import com.bus.exceptions.CustomerException;
 
 public class CusLoginusecase {
 
-	public static void main(String[] args) {
+	public static Customer CusLogin() {
+		
+		Customer customer = null;
 		
 		Scanner sc = new Scanner (System.in);
 		
@@ -22,7 +24,7 @@ public class CusLoginusecase {
 		CustomerDao dao = new CustomerDaoImpl();
 		
 		try {
-			Customer customer = dao.cusLogin(username, password);
+			 customer = dao.cusLogin(username, password);
 			
 			System.out.println("Welcome " + customer.getFirstName() + " " + customer.getLastName());
 		} catch (CustomerException e) {
@@ -30,7 +32,8 @@ public class CusLoginusecase {
 			System.out.println(e.getMessage());
 		}
 		
-		sc.close();
+		return customer;
+//		sc.close();
 
 	}
 

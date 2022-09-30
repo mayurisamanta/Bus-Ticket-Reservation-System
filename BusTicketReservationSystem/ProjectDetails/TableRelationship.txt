@@ -9,7 +9,7 @@ create table bus(
     arrival Date not null,
     departure Date not null,
     totalSeats int not null,
-    AvailSeats int not null,
+    availSeats int not null,
     fare int not null
 );
 

@@ -3,6 +3,26 @@ cusSignUp1 / cusSignUp2 :
 insert into customer(username, password, firstName, lastName, address, mobile) values (?,?,?,?,?,?);
 
 
-CusLoginusecase :
-------------------
+cusLogin :
+----------
 select * from customer where username = ? and password = ?;
+
+
+addBus :
+--------
+insert into bus values (?,?,?,?,?,?,?,?,?,?);
+
+
+bookTicket by Bus Name :
+------------------------
+select * from bus where bName = ?;
+select datediff(?, current_date());
+insert into booking(cusId, busNo, seatFrom, seatTo) values (?, ?, ?, ?);
+update bus set availseats = ? where busNo = ?;
+
+cancelTicket by Bus Name :
+--------------------------
+select * from bus where bName = ?;
+select * from booking where busNo = ? and cusId = ?;
+delete from booking where busNo = ? and cusId = ?;
+update bus set availseats = ? where busNo = ?;

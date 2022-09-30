@@ -34,10 +34,10 @@ public class CusSignUp2usecase {
 		
 		CustomerDao dao = new CustomerDaoImpl();
 		
-		String result = dao.cusSignUp2(customer);
+		String result = dao.cusSignUp(customer);
 		System.out.println(result);
 		
-		sc.close();
+//		sc.close();
 
 	}
 

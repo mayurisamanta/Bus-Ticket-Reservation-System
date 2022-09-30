@@ -1,50 +1,65 @@
 package com.bus.bean;
 
-import java.sql.Date;
-import java.util.Arrays;
-
 public class CustomerDTO {
+	
+	private int BId;
 
 	private String firstName;
 	
 	private String lastName;
 	
-	private String address;
-	
 	private String mobile;
 	
-	private int BusNo;
-	
-	private String bName;
-	
-	private int[] seatNo;
-	
-	private String routeFrom;
-	
-	private String routeTo;
-	
-	private Date arrival;
-	
-	private Date departure;
+	private int busNo;
+	 
+	 private String bName;
+	 
+	 private String routeFrom;
+	 
+	 private String routeTo;
+	 
+	 private String arrival;
+	 
+	 private String departure;
+	 
+	 private int fare;
+	 
+	 private int seatFrom;
+	 
+	 private int seatTo;
+	 
+	 private boolean status;
 
-	public CustomerDTO(String firstName, String lastName, String address, String mobile, int busNo, String bName,
-			int[] seatNo, String routeFrom, String routeTo, Date arrival, Date departure) {
+	public CustomerDTO(int bId, String firstName, String lastName, String mobile, int busNo, String bName,
+			String routeFrom, String routeTo, String arrival, String departure, int fare, int seatFrom, int seatTo,
+			boolean status) {
 		super();
+		BId = bId;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.address = address;
 		this.mobile = mobile;
-		this.BusNo = busNo;
+		this.busNo = busNo;
 		this.bName = bName;
-		this.seatNo = seatNo;
 		this.routeFrom = routeFrom;
 		this.routeTo = routeTo;
 		this.arrival = arrival;
 		this.departure = departure;
+		this.fare = fare;
+		this.seatFrom = seatFrom;
+		this.seatTo = seatTo;
+		this.status = status;
 	}
 
 	public CustomerDTO() {
 		super();
+	}
+
+	public int getBId() {
+		return BId;
+	}
+
+	public void setBId(int bId) {
+		BId = bId;
 	}
 
 	public String getFirstName() {
@@ -63,14 +78,6 @@ public class CustomerDTO {
 		this.lastName = lastName;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public String getMobile() {
 		return mobile;
 	}
@@ -80,11 +87,11 @@ public class CustomerDTO {
 	}
 
 	public int getBusNo() {
-		return BusNo;
+		return busNo;
 	}
 
 	public void setBusNo(int busNo) {
-		this.BusNo = busNo;
+		this.busNo = busNo;
 	}
 
 	public String getbName() {
@@ -93,14 +100,6 @@ public class CustomerDTO {
 
 	public void setbName(String bName) {
 		this.bName = bName;
-	}
-
-	public int[] getSeatNo() {
-		return seatNo;
-	}
-
-	public void setSeatNo(int[] seatNo) {
-		this.seatNo = seatNo;
 	}
 
 	public String getRouteFrom() {
@@ -119,33 +118,63 @@ public class CustomerDTO {
 		this.routeTo = routeTo;
 	}
 
-	public Date getArrival() {
+	public String getArrival() {
 		return arrival;
 	}
 
-	public void setArrival(Date arrival) {
+	public void setArrival(String arrival) {
 		this.arrival = arrival;
 	}
 
-	public Date getDeparture() {
+	public String getDeparture() {
 		return departure;
 	}
 
-	public void setDeparture(Date departure) {
+	public void setDeparture(String departure) {
 		this.departure = departure;
+	}
+
+	public int getFare() {
+		return fare;
+	}
+
+	public void setFare(int fare) {
+		this.fare = fare;
+	}
+
+	public int getSeatFrom() {
+		return seatFrom;
+	}
+
+	public void setSeatFrom(int seatFrom) {
+		this.seatFrom = seatFrom;
+	}
+
+	public int getSeatTo() {
+		return seatTo;
+	}
+
+	public void setSeatTo(int seatTo) {
+		this.seatTo = seatTo;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 	@Override
 	public String toString() {
-		return "CustomerDTO [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", mobile="
-				+ mobile + ", BusNo=" + BusNo + ", bName=" + bName + ", seatNo=" + Arrays.toString(seatNo)
-				+ ", routeFrom=" + routeFrom + ", routeTo=" + routeTo + ", arrival=" + arrival + ", departure="
-				+ departure + "]";
+		return "CustomerDTO [BId=" + BId + ", firstName=" + firstName + ", lastName=" + lastName + ", mobile=" + mobile
+				+ ", busNo=" + busNo + ", bName=" + bName + ", routeFrom=" + routeFrom + ", routeTo=" + routeTo
+				+ ", arrival=" + arrival + ", departure=" + departure + ", fare=" + fare + ", seatFrom=" + seatFrom
+				+ ", seatTo=" + seatTo + ", status=" + status + "]";
 	}
-	
-	
-	
-	
+	 
+	 
+	 
 
-		
 }

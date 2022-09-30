@@ -31,11 +31,11 @@ public class CusSignUp1usecase {
 		
 		CustomerDao dao = new CustomerDaoImpl();
 		
-		String result = dao.cusSignUp1(username, password, firstName, lastName, address, mobile);
+		String result = dao.cusSignUp(username, password, firstName, lastName, address, mobile);
 		
 		System.out.println(result);
 		
-		sc.close();
+//		sc.close();
 
 	}
 
