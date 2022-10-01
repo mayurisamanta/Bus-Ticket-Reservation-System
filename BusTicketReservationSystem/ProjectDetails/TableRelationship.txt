@@ -6,8 +6,8 @@ create table bus(
     routeFrom varchar(20) not null,
     routeTo varchar(20) not null,
     bType varchar(5) not null check (bType = 'AC' OR bType = 'NonAC'),
-    arrival Date not null,
-    departure Date not null,
+    departure Datetime not null,
+    arrival Datetime not null,
     totalSeats int not null,
     availSeats int not null,
     fare int not null

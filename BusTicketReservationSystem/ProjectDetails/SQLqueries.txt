@@ -26,3 +26,17 @@ select * from bus where bName = ?;
 select * from booking where busNo = ? and cusId = ?;
 delete from booking where busNo = ? and cusId = ?;
 update bus set availseats = ? where busNo = ?;
+
+viewTicket :
+------------
+select * from booking where cusId = ?;
+
+
+updateStatus :
+--------------
+update booking set status = true where cusId = ?;
+
+
+viewAllTickets :
+----------------
+select * from booking;

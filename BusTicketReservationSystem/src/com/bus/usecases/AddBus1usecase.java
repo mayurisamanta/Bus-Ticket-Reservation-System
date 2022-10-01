@@ -1,7 +1,9 @@
 package com.bus.usecases;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import com.bus.custom.ConsoleColors;
 import com.bus.dao.AdminDao;
 import com.bus.dao.AdminDaoImpl;
 
@@ -11,43 +13,54 @@ public class AddBus1usecase {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Enter Bus number");
-		int busNo = sc.nextInt();
+		try {
+			
+			System.out.println(ConsoleColors.ORANGE + "Enter Bus number" + ConsoleColors.RESET);
+			int busNo = sc.nextInt();
+			
+			System.out.println(ConsoleColors.ORANGE + "Enter bus name" + ConsoleColors.RESET);
+			String bName = sc.next();
+			
+			System.out.println(ConsoleColors.ORANGE + "Enter Route from" + ConsoleColors.RESET);
+			String routeFrom = sc.next();
+			
+			System.out.println(ConsoleColors.ORANGE + "Enter Routo To" + ConsoleColors.RESET);
+			String routeTo = sc.next();
+			
+			System.out.println(ConsoleColors.ORANGE + "Enter Bus Type - AC / NonAC" + ConsoleColors.RESET);
+			String bType = sc.next();
+			
+			sc.nextLine();
+			System.out.println(ConsoleColors.ORANGE + "Enter Departure date and time in format (YYYY-MM-DD HH:MI:SS)" + ConsoleColors.RESET);
+			String departure = sc.nextLine();
+			
+			System.out.println(ConsoleColors.ORANGE + "Enter Arrival date and time in format (YYYY-MM-DD HH:MI:SS)" + ConsoleColors.RESET);
+			String arrival = sc.nextLine();
+			
+			System.out.println(ConsoleColors.ORANGE + "Enter Total Seats" + ConsoleColors.RESET);
+			int totalSeats = sc.nextInt();
+			
+			System.out.println(ConsoleColors.ORANGE + "Enter Available Seats" + ConsoleColors.RESET);
+			int availSeats = sc.nextInt();
+			
+			System.out.println(ConsoleColors.ORANGE + "Enter fare" + ConsoleColors.RESET);
+			int fare = sc.nextInt();
+			
+			AdminDao dao = new AdminDaoImpl();
+			
+			String result = dao.addBus(busNo, bName, routeFrom, routeTo, bType, departure, arrival, totalSeats, availSeats, fare);
+			
+			if (result.equals("Bus added Successfully")) {
+				System.out.println(ConsoleColors.GREEN_BACKGROUND + result + ConsoleColors.RESET);
+			}
+			else {
+				System.out.println(ConsoleColors.RED_BACKGROUND + result + ConsoleColors.RESET);
+			}
+		}
+		catch (InputMismatchException e) {
+			System.out.println(ConsoleColors.RED_BACKGROUND + "Invalid input" + ConsoleColors.RESET);
+		}
 		
-		System.out.println("Enter bus name");
-		String bName = sc.next();
-		
-		System.out.println("Enter Route from");
-		String routeFrom = sc.next();
-		
-		System.out.println("Enter Routo To");
-		String routeTo = sc.next();
-		
-		System.out.println("Enter Bus Type - AC / NonAC");
-		String bType = sc.next();
-		
-		System.out.println("Enter Arrival date");
-		String arrival = sc.next();
-		
-		System.out.println("Enter departure date");
-		String departure = sc.next();
-		
-		System.out.println("Enter Total Seats");
-		int totalSeats = sc.nextInt();
-		
-		System.out.println("Enter Available Seats");
-		int availSeats = sc.nextInt();
-		
-		System.out.println("Enter fare");
-		int fare = sc.nextInt();
-		
-		AdminDao dao = new AdminDaoImpl();
-		
-		String result = dao.addBus(busNo, bName, routeFrom, routeTo, bType, arrival, departure, totalSeats, availSeats, fare);
-		
-		System.out.println(result);
-		
-//		sc.close();
 	}
 
 }

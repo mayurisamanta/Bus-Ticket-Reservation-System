@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.bus.bean.Customer;
+import com.bus.custom.ConsoleColors;
 import com.bus.exceptions.BusException;
 import com.bus.exceptions.CustomerException;
 import com.bus.utility.DButil;
@@ -17,7 +18,7 @@ public class CustomerDaoImpl implements CustomerDao{
 	public String cusSignUp(String username, String password, String firstName, String lastName, String address,
 			String mobile) {
 		
-		String message = "Sign up Failed...";
+		String message = "Sign up Failed";
 		
 		try(Connection conn = DButil.provideConnection()){
 			
@@ -32,7 +33,7 @@ public class CustomerDaoImpl implements CustomerDao{
 			
 			int x = ps.executeUpdate();
 			
-			if (x > 0) message = "Sign up Successfull...";
+			if (x > 0) message = "Sign up Successfull";
 			
 		}
 		catch (SQLException e) {
@@ -45,7 +46,7 @@ public class CustomerDaoImpl implements CustomerDao{
 	@Override
 	public String cusSignUp(Customer customer) {
 		
-		String message = "Sign up Failed...";
+		String message = "Sign up Failed";
 		
 		try(Connection conn = DButil.provideConnection()){
 			
@@ -60,7 +61,7 @@ public class CustomerDaoImpl implements CustomerDao{
 			
 			int x = ps.executeUpdate();
 			
-			if (x > 0) message = "Sign up Successfull...";
+			if (x > 0) message = "Sign up Successfull";
 			
 		}
 		catch (SQLException e) {
@@ -85,8 +86,6 @@ public class CustomerDaoImpl implements CustomerDao{
 			
 			ResultSet rs =  ps.executeQuery();
 			
-			
-			
 			if (rs.next()) {
 				int cusId = rs.getInt("cusId");
 				String usernamee =  rs.getString("username");
@@ -100,7 +99,7 @@ public class CustomerDaoImpl implements CustomerDao{
 				
 			}
 			else {
-				throw new CustomerException("Customer with username : " + username + " is not available...");
+				throw new CustomerException("Invalid username or password");
 				
 			}
 			
@@ -115,7 +114,7 @@ public class CustomerDaoImpl implements CustomerDao{
 	@Override
 	public String bookTicket(String bName, int cusId, int no) throws BusException {
 	
-		String message = "Ticket Booked fail...";
+		String message = "Ticket Booking fail";
 		
 		try (Connection conn = DButil.provideConnection()){
 			
@@ -142,7 +141,7 @@ public class CustomerDaoImpl implements CustomerDao{
 				}
 				
 				if (days <= 0) {
-					throw new BusException("Booking is not available for this date...");
+					throw new BusException("Booking is not available for this date");
 				}
 				else if (availSeats >= no) {
 					int seatFrom = totalSeats - availSeats + 1;
@@ -165,23 +164,25 @@ public class CustomerDaoImpl implements CustomerDao{
 						ps3.setInt(2, busNo);
 						int y = ps3.executeUpdate();
 						
-						if (y <= 0) throw new BusException("Available Seat is not updated...");
+						if (y <= 0) throw new BusException("Available Seat is not updated");
 						
 						
-						System.out.println("Customer Id is :" + cusId + "\n"
-								+ "Bus No is :" + busNo + "\n"
-								+ "Seat No is from :" + seatFrom + " to " + seatTo + "\n"
-								+ "Bus fare is : " + fare + "\n"
-								+ "Booking yet to be confirm by Adminstrator");
+						System.out.println(ConsoleColors.ROSY_PINK + "--------------------------------------------" + "\n"
+																   + "Customer Id is : " + cusId + "\n"
+																   + "Bus No is : " + busNo + "\n"
+																   + "Seat No is from : " + seatFrom + " to " + seatTo + "\n"
+																   + "Bus fare is : " + fare + "\n"
+																   + "Booking yet to be confirm by Adminstrator" + "\n" 
+																   + "---------------------------------------------" + ConsoleColors.RESET);
 						
-						 message = "Ticket Booked Successfully...";
+						 message = "Ticket Booked Successfully";
 					}
 				
 				}
 	
 			}
 			else {
-				throw new BusException("Bus with " + bName + " is not available...");
+				throw new BusException("Bus with " + bName + " is not available");
 			}
 			
 		}
@@ -194,7 +195,7 @@ public class CustomerDaoImpl implements CustomerDao{
 
 	@Override
 	public String cancelTicket(String bName, int cusId) throws BusException {
-		String message = "Ticket cancellation failed...";
+		String message = "Ticket cancellation failed";
 		
 		try (Connection conn = DButil.provideConnection()){
 				
@@ -238,17 +239,17 @@ public class CustomerDaoImpl implements CustomerDao{
 							ps3.setInt(2, busNo);
 							int y = ps3.executeUpdate();
 							
-							if (y <= 0) throw new BusException("Available Seat is not updated...");
+							if (y <= 0) throw new BusException("Available Seat is not updated");
 							
-							 message = "Ticket cancelled Successfully...";
+							 message = "Ticket cancelled Successfully";
 						}
 					
 					}
-				    else message = "No booking found...";
+				    else message = "No booking found";
 		
 				}
 				else {
-					throw new BusException("Bus with " + bName + " is not available...");
+					throw new BusException("Bus with " + bName + " is not available");
 				}
 				
 			}
@@ -258,6 +259,36 @@ public class CustomerDaoImpl implements CustomerDao{
 		
 		return message;
 	
+	}
+
+	@Override
+	public void viewTicket(int cusId) {
+		boolean flag = false;
+		
+		try(Connection conn = DButil.provideConnection()){
+			PreparedStatement ps1 = conn.prepareStatement("select * from booking where cusId = ?");
+			ps1.setInt(1, cusId);
+			
+			ResultSet rs1 = ps1.executeQuery();
+			
+			while (rs1.next()) {
+				flag = true;
+				System.out.println(ConsoleColors.ROSY_PINK + "---------------------------------------------" + ConsoleColors.RESET);
+				System.out.println(ConsoleColors.ROSY_PINK + "Bus Id : " + rs1.getInt("bId") + ConsoleColors.RESET);
+				System.out.println(ConsoleColors.ROSY_PINK + "Bus No : " + rs1.getInt("busNo") + ConsoleColors.RESET);
+				System.out.println(ConsoleColors.ROSY_PINK + "Total tickets : " + (rs1.getByte("seatTo") - rs1.getInt("seatFrom") + 1) + ConsoleColors.RESET);
+				if (rs1.getBoolean("status")) System.out.println(ConsoleColors.ROSY_PINK + "Status : Booked"  + ConsoleColors.RESET);
+				else System.out.println(ConsoleColors.ROSY_PINK + "Status : Pending" + ConsoleColors.RESET);
+				
+				System.out.println(ConsoleColors.ROSY_PINK + "----------------------------------------------" + ConsoleColors.RESET);
+			}
+			
+			if (flag == false) System.out.println(ConsoleColors.RED_BACKGROUND + "No tickets found" + ConsoleColors.RESET);
+		}
+		catch (SQLException s){
+			System.out.println(ConsoleColors.RED_BACKGROUND + s.getMessage() + ConsoleColors.RESET);
+		}
+		
 	}
 
 	

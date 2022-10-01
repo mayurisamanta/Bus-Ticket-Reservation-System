@@ -8,7 +8,7 @@ Customer :
 -- cusLogin (customer)
 -- bookTicket (boolean) --> add in Booking table
 -- cancelTicket (string) --> remove from Booking table
--- allTickets (list of customerDTO)
+-- allTickets ()
 
 Administrator :
 ---------------
@@ -16,5 +16,5 @@ Administrator :
 -- adminLogin (string)
 -- addBus (string) --> add in bus table
 -- confirmationOfSeats (customerDTO) --> update in Booking table
--- allBookingDetails (list of Booking)
+-- allBookingDetails ()
 

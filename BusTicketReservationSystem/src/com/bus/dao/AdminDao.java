@@ -14,4 +14,8 @@ public interface AdminDao {
 			int totalSeats, int availSeats, int fare);
 	
 	public String addBus(Bus bus);
+	
+	public String updateStatus(int cusId);
+	
+	public void viewAllTickets();
 }

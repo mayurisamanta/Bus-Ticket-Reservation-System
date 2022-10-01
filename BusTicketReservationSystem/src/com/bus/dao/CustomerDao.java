@@ -15,4 +15,6 @@ public interface CustomerDao {
 	public String bookTicket (String bName, int cusId, int no) throws BusException;
 	
 	public String cancelTicket(String bName, int cusId) throws BusException;
+	
+	public void viewTicket(int cusId);
 }
