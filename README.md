@@ -72,8 +72,6 @@ bbbbvbb# zealous-price-4318
 
 # Feedback
 > Valuable feedback will be appreciated.
-</br>
-
 > You can reach out to me via below medium.
 
 - [Email](mayurisamanta@gmail.com)
