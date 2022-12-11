@@ -26,6 +26,7 @@
 
 - Java
 - MySQL
+- Hibernate
 - spring tool suite eclipse
 - Git & GitHub
 
