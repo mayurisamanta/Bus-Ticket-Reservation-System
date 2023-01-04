@@ -26,13 +26,13 @@
 
 - Java
 - MySQL
-- Hibernate
+- JDBC
 - spring tool suite eclipse
 - Git & GitHub
 
 # Lessons Learned
 
-- Gain excessive knowledge on application of Java, Hibernate and MySQL.
+- Gain excessive knowledge on application of Java, JDBC and MySQL.
 - Enjoyed the process of learning and creating the application.
 
 # Overview of my work
