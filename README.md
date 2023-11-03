@@ -8,7 +8,7 @@
 
 > Build Bus ticket reservation system application during the construct week at [Masai School](https://masaischool.com/). Completed the project within five days.
 
-> Secure 1st position among all individual projects [Click here](https://drive.google.com/drive/folders/1irT1biLGc3q1suaLxKJ8lX1nIGXz6nvN)
+> Secure 1st position among all individual projects [Click here](https://drive.google.com/file/d/1_P7966B7k6BcIrKtC8Rat-WfJogMw0Z7/view?usp=sharing)
 
 # 👉 [Click here](https://drive.google.com/file/d/1jlyVHpzDhLKQOJf6ulayLUYJ4bejyv5B/view?usp=sharing) to go through detail explanation of this application 
 
